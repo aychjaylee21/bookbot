@@ -5,7 +5,9 @@ def main():
     num_words = get_num_words(text)
     char_count = get_num_characters(text)
     print(f"{num_words} words found in the document")
-    print(char_count)
+
+# def sort_on(dict):
+#     return dict[]
 
 def get_book_text(path):
     with open(path) as f:
@@ -18,14 +20,25 @@ def get_num_words(text):
 def get_num_characters(text):
     lower_words = text.lower()
 
-    char_count = {}
+    dict = {}
 
     for char in lower_words:
-        if char in char_count:
-            char_count[char] += 1
-        else:
-            char_count[char] = 1 
-    return dict(sorted(char_count.items()))
+        if char.isalpha():
+            if char in dict:
+                dict[char] += 1
+            else:
+                dict[char] = 1 
+
+    sorted_list = sorted(dict.items(), key=lambda x: x[0]) 
+
+    for key, value in sorted_list:
+        print(f"The '{key}' character was found {value} times.")
+
+    # for i in len(sorted_list):
+    #     print(f"The {sorted_list}")
+
+
+
+
 
 main()
-
